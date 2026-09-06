@@ -1,0 +1,1297 @@
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(120, 75, 25, 0.18),
+            transparent 45%),
+        #080706;
+
+    color: #f4e6ca;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   MAIN KAALCHAKRA
+========================= */
+
+.kaalchakra {
+    width: min(95vw, 900px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    /*
+       Start from the top instead of vertically
+       centering the entire application.
+    */
+    justify-content: flex-start;
+
+    padding: 30px 20px 40px;
+
+    gap: 16px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+.header h1 {
+    font-size: clamp(28px, 5vw, 46px);
+
+    letter-spacing: 8px;
+
+    font-weight: 500;
+
+    color: #e6c27a;
+
+    text-shadow:
+        0 0 10px rgba(230, 194, 122, 0.5),
+        0 0 25px rgba(230, 194, 122, 0.2);
+}
+
+.header p {
+    margin-top: 7px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0.6;
+}
+
+
+/* =========================
+   CLOCK WRAPPER
+========================= */
+
+.clock-wrapper {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+
+    border-radius: 50%;
+
+    transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+.clock {
+    position: relative;
+
+    width: min(70vw, 560px);
+
+    aspect-ratio: 1 / 1;
+
+    border-radius: 50%;
+
+    /* YOUR ORIGINAL CLOCK IMAGE */
+
+    background-image: url("images/kcfinal2.jpeg");
+
+    background-size: cover;
+
+    background-position: 45% 55%;
+
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 15px rgba(255, 200, 100, 0.9),
+        0 0 35px rgba(255, 180, 70, 0.6),
+        0 0 70px rgba(255, 160, 50, 0.4);
+
+    transition:
+        box-shadow 0.5s ease,
+        transform 0.5s ease;
+}
+
+
+/* =========================
+   CLOCK ACTIVE / VOICE MODE
+========================= */
+
+.clock-wrapper.listening .clock {
+
+    box-shadow:
+        0 0 20px rgba(255, 210, 120, 1),
+        0 0 50px rgba(255, 190, 80, 0.9),
+        0 0 100px rgba(255, 160, 50, 0.75),
+        0 0 150px rgba(255, 140, 40, 0.35);
+
+    transform: scale(1.015);
+
+    animation: clockPulse 1.4s ease-in-out infinite;
+}
+
+
+@keyframes clockPulse {
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.15);
+    }
+}
+
+
+/* =========================
+   CLOCK HAND BASE
+========================= */
+
+.hand {
+    position: absolute;
+
+    left: 50%;
+    bottom: 50%;
+
+    transform-origin: 50% 100%;
+
+    border-radius: 50px;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   HOUR HAND
+========================= */
+
+.hour-hand {
+    width: 11px;
+    height: 26%;
+
+    background: #111;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+}
+
+
+/* =========================
+   MINUTE HAND
+========================= */
+
+.minute-hand {
+    width: 7px;
+    height: 38%;
+
+    background: #111;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+}
+
+
+/* =========================
+   SECOND HAND
+========================= */
+
+.second-hand {
+    width: 2px;
+    height: 39%;
+
+    background: #4b2813;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+.center-dot {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 27px;
+    height: 27px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #15110d;
+
+    border: 4px solid #c58b32;
+
+    z-index: 20;
+
+    box-shadow:
+        0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================
+   DIGITAL DISPLAY
+========================= */
+
+.digital-display {
+    text-align: center;
+
+    margin-top: 3px;
+}
+
+
+.time {
+    font-family: "Courier New", monospace;
+
+    font-size: clamp(28px, 5vw, 42px);
+
+    letter-spacing: 5px;
+
+    color: #f1d18a;
+
+    text-shadow:
+        0 0 10px rgba(241, 209, 138, 0.5);
+}
+
+
+.date {
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+}
+
+
+.period {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 5px;
+}
+
+
+.control-btn {
+    width: 92px;
+    height: 65px;
+
+    border: 1px solid rgba(230, 194, 122, 0.25);
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: #e6c27a;
+
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.control-btn span {
+    font-size: 20px;
+}
+
+
+.control-btn small {
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.7;
+}
+
+
+.control-btn:hover {
+
+    transform: translateY(-3px);
+
+    background: rgba(230, 194, 122, 0.08);
+
+    border-color: rgba(230, 194, 122, 0.55);
+
+    box-shadow:
+        0 0 15px rgba(230, 194, 122, 0.15);
+}
+
+
+/* =========================
+   VOICE BUTTON
+========================= */
+
+.voice-btn {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(230, 194, 122, 0.35);
+
+    background: rgba(230, 194, 122, 0.06);
+
+    color: #f1d18a;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.voice-btn:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(230, 194, 122, 0.1);
+
+    box-shadow:
+        0 0 20px rgba(230, 194, 122, 0.2);
+}
+
+
+.mic-icon {
+    font-size: 18px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0.35;
+
+    min-height: 15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .kaalchakra {
+        padding: 20px 12px;
+    }
+
+    .header h1 {
+        letter-spacing: 5px;
+    }
+
+    .clock {
+        width: min(88vw, 500px);
+    }
+
+    .controls {
+        gap: 7px;
+    }
+
+    .control-btn {
+        width: 76px;
+        height: 58px;
+    }
+
+    .control-btn small {
+        font-size: 9px;
+    }
+
+    .voice-btn {
+        padding: 10px 18px;
+    }
+}
+
+
+/* =========================
+   ALARM MODAL
+========================= */
+
+.modal-overlay,
+.ringing-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 100;
+}
+
+
+/* Active modal */
+
+.modal-overlay.active,
+.ringing-overlay.active {
+    display: flex;
+}
+
+
+/* =========================
+   ALARM PANEL
+========================= */
+
+.alarm-panel,
+.ringing-panel {
+
+    position: relative;
+
+    width: min(90vw, 380px);
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(230, 194, 122, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35, 28, 20, 0.97),
+            rgba(12, 10, 8, 0.98)
+        );
+
+    box-shadow:
+        0 0 30px rgba(230, 194, 122, 0.12),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+
+    animation: panelAppear 0.3s ease;
+}
+
+
+@keyframes panelAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-btn {
+
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #e6c27a;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+.close-btn:hover {
+    background: rgba(230, 194, 122, 0.1);
+}
+
+
+/* =========================
+   ALARM ICON
+========================= */
+
+.panel-icon {
+    font-size: 38px;
+
+    margin-bottom: 10px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(230, 194, 122, 0.5)
+        );
+}
+
+
+.alarm-panel h2,
+.ringing-panel h2 {
+
+    color: #f1d18a;
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+}
+
+
+.panel-subtitle {
+
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================
+   ALARM INPUTS
+========================= */
+
+.alarm-inputs {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 25px 0;
+}
+
+
+.alarm-inputs input {
+
+    width: 75px;
+    height: 55px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(230, 194, 122, 0.25);
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #f1d18a;
+
+    font-size: 25px;
+
+    font-family: "Courier New", monospace;
+}
+
+
+.alarm-inputs input:focus {
+
+    border-color: rgba(230, 194, 122, 0.7);
+
+    box-shadow:
+        0 0 15px rgba(230, 194, 122, 0.12);
+}
+
+
+.alarm-inputs span {
+
+    font-size: 25px;
+
+    color: #e6c27a;
+}
+
+
+.alarm-inputs select {
+
+    height: 55px;
+
+    padding: 0 10px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(230, 194, 122, 0.25);
+
+    background: #19140e;
+
+    color: #f1d18a;
+
+    outline: none;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   SET ALARM
+========================= */
+
+.set-alarm-btn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid rgba(230, 194, 122, 0.4);
+
+    border-radius: 12px;
+
+    background: rgba(230, 194, 122, 0.08);
+
+    color: #f1d18a;
+
+    cursor: pointer;
+
+    letter-spacing: 1px;
+
+    transition: all 0.25s ease;
+}
+
+
+.set-alarm-btn:hover {
+
+    background: rgba(230, 194, 122, 0.15);
+
+    box-shadow:
+        0 0 20px rgba(230, 194, 122, 0.15);
+}
+
+
+/* =========================
+   ALARM STATUS
+========================= */
+
+.alarm-status {
+
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.55;
+}
+
+
+.cancel-alarm-btn {
+
+    margin-top: 12px;
+
+    padding: 8px 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #b99a62;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+
+.cancel-alarm-btn:hover {
+    color: #f1d18a;
+}
+
+
+/* =========================
+   RINGING PANEL
+========================= */
+
+.ringing-panel {
+
+    animation:
+        panelAppear 0.3s ease,
+        alarmShake 0.8s ease-in-out infinite;
+}
+
+
+@keyframes alarmShake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-1deg);
+    }
+
+    75% {
+        transform: rotate(1deg);
+    }
+}
+
+
+.ringing-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 10px;
+
+    animation:
+        bellPulse 0.7s ease-in-out infinite;
+}
+
+
+@keyframes bellPulse {
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+.ringing-panel p {
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    opacity: 0.55;
+}
+
+
+.ringing-panel button {
+
+    margin-top: 25px;
+
+    padding: 12px 30px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(230, 194, 122, 0.4);
+
+    background: rgba(230, 194, 122, 0.1);
+
+    color: #f1d18a;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.ringing-panel button:hover {
+
+    background: rgba(230, 194, 122, 0.2);
+
+    box-shadow:
+        0 0 20px rgba(230, 194, 122, 0.2);
+}
+
+
+/* =========================
+   ALARM CLOCK GLOW
+========================= */
+
+.clock-wrapper.alarm-ringing .clock {
+
+    animation:
+        alarmGlow 0.9s ease-in-out infinite;
+}
+
+
+@keyframes alarmGlow {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 20px rgba(255, 200, 100, 0.8),
+            0 0 50px rgba(255, 170, 60, 0.6);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 35px rgba(255, 220, 130, 1),
+            0 0 80px rgba(255, 180, 60, 0.95),
+            0 0 130px rgba(255, 150, 30, 0.65);
+    }
+}
+
+/* =========================
+   STOPWATCH
+========================= */
+
+.stopwatch-panel {
+
+    position: relative;
+
+    width: min(90vw, 420px);
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(230, 194, 122, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35, 28, 20, 0.97),
+            rgba(12, 10, 8, 0.98)
+        );
+
+    box-shadow:
+        0 0 30px rgba(230, 194, 122, 0.12),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+
+    animation: panelAppear 0.3s ease;
+}
+
+
+/* =========================
+   STOPWATCH DISPLAY
+========================= */
+
+.stopwatch-display {
+
+    margin: 30px 0;
+
+    font-family: "Courier New", monospace;
+
+    font-size: clamp(30px, 8vw, 45px);
+
+    letter-spacing: 3px;
+
+    color: #f1d18a;
+
+    text-shadow:
+        0 0 10px rgba(241, 209, 138, 0.5),
+        0 0 25px rgba(241, 209, 138, 0.15);
+}
+
+
+/* =========================
+   STOPWATCH BUTTONS
+========================= */
+
+.stopwatch-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.stopwatch-controls button {
+
+    min-width: 120px;
+
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(230, 194, 122, 0.35);
+
+    background: rgba(230, 194, 122, 0.07);
+
+    color: #f1d18a;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.stopwatch-controls button:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(230, 194, 122, 0.14);
+
+    box-shadow:
+        0 0 18px rgba(230, 194, 122, 0.15);
+}
+
+/* =========================
+   TIMER PANEL
+========================= */
+
+.timer-panel {
+
+    position: relative;
+
+    width: min(92vw, 450px);
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(230, 194, 122, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35, 28, 20, 0.97),
+            rgba(12, 10, 8, 0.98)
+        );
+
+    box-shadow:
+        0 0 30px rgba(230, 194, 122, 0.12),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+
+    animation: panelAppear 0.3s ease;
+}
+
+
+/* =========================
+   TIMER INPUTS
+========================= */
+
+.timer-inputs {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+
+.timer-inputs > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.timer-inputs input {
+
+    width: 75px;
+
+    height: 55px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(230, 194, 122, 0.25);
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #f1d18a;
+
+    font-size: 23px;
+
+    font-family: "Courier New", monospace;
+}
+
+
+.timer-inputs input:focus {
+
+    border-color: rgba(230, 194, 122, 0.7);
+
+    box-shadow:
+        0 0 15px rgba(230, 194, 122, 0.12);
+}
+
+
+.timer-inputs span {
+
+    color: #e6c27a;
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+
+.timer-inputs small {
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.45;
+}
+
+
+/* =========================
+   TIMER DISPLAY
+========================= */
+
+.timer-display {
+
+    margin: 28px 0 20px;
+
+    font-family: "Courier New", monospace;
+
+    font-size: clamp(32px, 8vw, 48px);
+
+    letter-spacing: 4px;
+
+    color: #f1d18a;
+
+    text-shadow:
+        0 0 10px rgba(241, 209, 138, 0.5),
+        0 0 25px rgba(241, 209, 138, 0.15);
+}
+
+
+/* =========================
+   TIMER CONTROLS
+========================= */
+
+.timer-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.timer-controls button {
+
+    min-width: 120px;
+
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(230, 194, 122, 0.35);
+
+    background: rgba(230, 194, 122, 0.07);
+
+    color: #f1d18a;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: all 0.25s ease;
+}
+
+
+.timer-controls button:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(230, 194, 122, 0.14);
+
+    box-shadow:
+        0 0 18px rgba(230, 194, 122, 0.15);
+}
+
+
+/* =========================
+   TIMER STATUS
+========================= */
+
+.timer-status {
+
+    margin-top: 15px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.45;
+}
+
+
+/* =========================
+   TIMER FINISHED GLOW
+========================= */
+
+.clock-wrapper.timer-ringing .clock {
+
+    animation:
+        timerGlow 0.9s ease-in-out infinite;
+}
+
+
+@keyframes timerGlow {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 20px rgba(255, 200, 100, 0.8),
+            0 0 50px rgba(255, 170, 60, 0.6);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 35px rgba(255, 220, 130, 1),
+            0 0 80px rgba(255, 180, 60, 0.95),
+            0 0 130px rgba(255, 150, 30, 0.65);
+    }
+}
+
+
+/* =========================
+   MOBILE TIMER
+========================= */
+
+@media (max-width: 600px) {
+
+    .timer-inputs input {
+
+        width: 62px;
+
+        height: 50px;
+
+        font-size: 19px;
+    }
+
+    .timer-inputs {
+
+        gap: 5px;
+    }
+
+}

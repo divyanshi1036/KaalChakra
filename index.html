@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KaalChakra</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="kaalchakra">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header class="header">
+            <h1>KAALCHAKRA</h1>
+            <p>The rhythm of time</p>
+        </header>
+
+
+        <!-- =========================
+             CLOCK
+        ========================== -->
+
+        <section class="clock-wrapper">
+
+            <div class="clock" id="clock">
+
+                <!-- Existing clock hands -->
+
+                <div class="hand hour-hand"></div>
+
+                <div class="hand minute-hand"></div>
+
+                <div class="hand second-hand"></div>
+
+
+                <!-- Center -->
+
+                <div class="center-dot"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DIGITAL TIME
+        ========================== -->
+
+        <section class="digital-display">
+
+            <div class="time" id="digitalTime">
+                00:00:00
+            </div>
+
+            <div class="date" id="dateDisplay">
+                Loading date...
+            </div>
+
+            <div class="period" id="period">
+                AM
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTROL PANEL
+        ========================== -->
+
+        <section class="controls">
+
+            <button class="control-btn" id="alarmBtn">
+                <span>⏰</span>
+                <small>Alarm</small>
+            </button>
+
+            <button class="control-btn" id="stopwatchBtn">
+                <span>⏱</span>
+                <small>Stopwatch</small>
+            </button>
+
+            <button class="control-btn" id="timerBtn">
+                <span>⏳</span>
+                <small>Timer</small>
+            </button>
+
+            <button class="control-btn" id="formatBtn">
+                <span>🌙</span>
+                <small>12 / 24</small>
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             VOICE BUTTON
+        ========================== -->
+
+        <button class="voice-btn" id="voiceBtn">
+
+            <span class="mic-icon">🎙</span>
+
+            <span class="voice-text">
+                Ask KaalChakra
+            </span>
+
+        </button>
+
+
+        <!-- =========================
+             STATUS
+        ========================== -->
+
+        <div class="status" id="status">
+            Ready
+        </div>
+
+    </main>
+    <!-- =========================
+     ALARM PANEL
+========================= -->
+
+<div class="modal-overlay" id="alarmModal">
+
+    <div class="alarm-panel">
+
+        <button class="close-btn" id="closeAlarm">
+            ×
+        </button>
+
+        <div class="panel-icon">
+            ⏰
+        </div>
+
+        <h2>Set Alarm</h2>
+
+        <p class="panel-subtitle">
+            Choose a time for KaalChakra
+        </p>
+
+
+        <div class="alarm-inputs">
+
+            <input
+                type="number"
+                id="alarmHour"
+                min="1"
+                max="12"
+                value="7"
+            >
+
+            <span>:</span>
+
+            <input
+                type="number"
+                id="alarmMinute"
+                min="0"
+                max="59"
+                value="00"
+            >
+
+            <select id="alarmPeriod">
+
+                <option value="AM">
+                    AM
+                </option>
+
+                <option value="PM">
+                    PM
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button class="set-alarm-btn" id="setAlarm">
+            Set Alarm
+        </button>
+
+
+        <div class="alarm-status" id="alarmStatus">
+            No alarm set
+        </div>
+
+
+        <button
+            class="cancel-alarm-btn"
+            id="cancelAlarm"
+            hidden
+        >
+            Cancel Alarm
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ALARM RINGING
+========================= -->
+
+<div class="ringing-overlay" id="ringingOverlay">
+
+    <div class="ringing-panel">
+
+        <div class="ringing-icon">
+            🔔
+        </div>
+
+        <h2>Time's Up</h2>
+
+        <p>
+            KaalChakra alarm is ringing
+        </p>
+
+        <button id="stopAlarm">
+            Stop Alarm
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     STOPWATCH PANEL
+========================= -->
+
+<div class="modal-overlay" id="stopwatchModal">
+
+    <div class="stopwatch-panel">
+
+        <button class="close-btn" id="closeStopwatch">
+            ×
+        </button>
+
+        <div class="panel-icon">
+            ⏱
+        </div>
+
+        <h2>Stopwatch</h2>
+
+        <p class="panel-subtitle">
+            Measure every moment
+        </p>
+
+
+        <!-- Stopwatch Display -->
+
+        <div class="stopwatch-display" id="stopwatchDisplay">
+            00:00:00.00
+        </div>
+
+
+        <!-- Stopwatch Controls -->
+
+        <div class="stopwatch-controls">
+
+            <button id="startStopwatch">
+                Start
+            </button>
+
+            <button id="resetStopwatch">
+                Reset
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     TIMER PANEL
+========================= -->
+
+<div class="modal-overlay" id="timerModal">
+
+    <div class="timer-panel">
+
+        <button class="close-btn" id="closeTimer">
+            ×
+        </button>
+
+        <div class="panel-icon">
+            ⏳
+        </div>
+
+        <h2>Timer</h2>
+
+        <p class="panel-subtitle">
+            Countdown every moment
+        </p>
+
+
+        <!-- Timer Inputs -->
+
+        <div class="timer-inputs">
+
+            <div>
+                <input
+                    type="number"
+                    id="timerHours"
+                    min="0"
+                    max="23"
+                    value="0"
+                >
+
+                <small>Hours</small>
+            </div>
+
+
+            <span>:</span>
+
+
+            <div>
+                <input
+                    type="number"
+                    id="timerMinutes"
+                    min="0"
+                    max="59"
+                    value="5"
+                >
+
+                <small>Minutes</small>
+            </div>
+
+
+            <span>:</span>
+
+
+            <div>
+                <input
+                    type="number"
+                    id="timerSeconds"
+                    min="0"
+                    max="59"
+                    value="0"
+                >
+
+                <small>Seconds</small>
+            </div>
+
+        </div>
+
+
+        <!-- Timer Display -->
+
+        <div
+            class="timer-display"
+            id="timerDisplay"
+        >
+            00:05:00
+        </div>
+
+
+        <!-- Controls -->
+
+        <div class="timer-controls">
+
+            <button id="startTimer">
+                Start
+            </button>
+
+            <button id="resetTimer">
+                Reset
+            </button>
+
+        </div>
+
+
+        <div
+            class="timer-status"
+            id="timerStatus"
+        >
+            Ready
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TIMER COMPLETE
+========================= -->
+
+<div
+    class="ringing-overlay"
+    id="timerCompleteOverlay"
+>
+
+    <div class="ringing-panel">
+
+        <div class="ringing-icon">
+            ⏳
+        </div>
+
+        <h2>Timer Complete</h2>
+
+        <p>
+            Your KaalChakra countdown has finished.
+        </p>
+
+        <button id="dismissTimer">
+            Done
+        </button>
+
+    </div>
+
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
